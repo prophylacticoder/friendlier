@@ -1,10 +1,22 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>friendlier - a way to stay closer</title>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>friendlier - a way to stay closer</title>
+  <link rel="stylesheet" href="css/resetfile.css">
+</head>
   <body>
-
+    <form action="_blank">
+      <label for="nickname">Nickname: </label>
+      <input type="text" id="nickname" name="nickname" required="required">
+      <input type="checkbox" id="anonymous" name="anonymous" value="anonymous">
+      <label for="anonymous">Anonymous</label>
+      <br>
+      <label for="message">Message: </label>
+      <textarea maxlength="255" id="message" placeholder="Type your message..."
+      name="message" required="required"></textarea>
+      <br>
+      <input type="submit" value="POST">
+    </form>
   </body>
 </html>

@@ -3,21 +3,31 @@
 <head>
   <meta charset="utf-8">
   <title>friendlier - a way to stay closer</title>
-  <link rel="stylesheet" href="/static/resetfile.css">
-  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" type="text/css" href="/static/resetfile.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+
 </head>
   <body>
-    <form action="_blank">
+    <header>
+    <h1 id="logo">friendlier</h1>
+    </header>
+    <hr>
+    <main>
+    <form action="/message" method="post">
       <label for="nickname">Nickname: </label>
       <input type="text" id="nickname" name="nickname" required="required">
       <input type="checkbox" id="anonymous" name="anonymous" value="anonymous">
       <label for="anonymous">Anonymous</label>
       <br>
-      <label for="message">Message: </label>
       <textarea maxlength="255" id="message" placeholder="Type your message..."
       name="message" required="required"></textarea>
       <br>
       <input type="submit" value="POST">
     </form>
+    <hr>
+      <div class="gridMessages">
+        <div class="gridFriendlier1"><p>One more time</p></div>
+      </div>
+    </main>
   </body>
 </html>

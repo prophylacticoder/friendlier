@@ -19,3 +19,8 @@ def handle_message():
         message['message'] = request.form['message']
         print(message)
     return render_template('index.html')
+
+@app.route('/friendliers', methods=['GET', ])
+def handle_ajax():
+    numberOfFriendliers = request.args.get('n', '')
+    return numberOfFriendliers

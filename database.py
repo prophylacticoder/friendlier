@@ -16,7 +16,3 @@ def sql_table(con):
     cursorObj.execute("CREATE TABLE messages(id integer PRIMARY KEY, nickname text, message text, datePosted datetime)")
 
     con.commit()
-
-con = sql_connection()
-
-sql_table(con)

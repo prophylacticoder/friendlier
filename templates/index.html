@@ -16,20 +16,18 @@
     </header>
     <hr>
     <main>
-    <form action="/message" method="post">
-      <label for="nickname" id="nickname">Nickname: </label>
+    <form action="/message" method="post" id="formFriendlier">
+      <label for="nickname" id="nicknameLabel">Nickname: </label>
       <input type="text" id="nickname" name="nickname" required="required">
       <input type="checkbox" id="anonymous" name="anonymous" value="anonymous">
-      <label for="anonymous">Anonymous</label>
+      <label for="anonymous" id="anonymousLabel">Anonymous</label>
       <br>
       <textarea maxlength="255" id="message" placeholder="Type your message..."
       name="message" required="required"></textarea>
       <br>
       <input type="submit" value="POST" id="submitMessagebtn">
     </form>
-    <hr>
       <div class="gridMessagesClass" id="gridMessages">
-        <p>Hello</p>
       </div>
     </main>
   </body>

@@ -25,6 +25,8 @@ function friendliers(){
 function createGridItems(number, messagesData) {
   // Create a new friendlier
   var divList = [];
+  // Create a list of the paragraph classes
+  var paragraghClasses = ['firstParagraph', 'secondParagraph', 'thirdParagraph', ];
   // Create a list of div element which will become a friendlier on the grid;
   for(var i = 0; i < number; i++){
     // Create the element
@@ -35,12 +37,17 @@ function createGridItems(number, messagesData) {
 
       paraList[j].setAttribute('id', 'paragrath' + i);
 
+      // Add a class to the currently paragraph
+      paraList[j].className = paragraghClasses[j];
+
       paraList[j].innerHTML = messagesData[i][j];
 
       divList[i].appendChild(paraList[j]);
     }
     // Customize with a progressive id;
     divList[i].setAttribute('id', 'friendlier' + i);
+
+    divList[i].setAttribute('class', 'friendliersClass');
     // Append the div into the grid;
     document.getElementById('gridMessages').appendChild(divList[i]);
   }

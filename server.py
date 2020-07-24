@@ -43,13 +43,13 @@ def handle_ajax():
     con = db.sql_connection()
     cursorObj = con.cursor()
 
-    cursorObj.execute("""SELECT nickname, message, datePosted FROM messages
+    cursorObj.execute("""SELECT nickname, datePosted, message FROM messages
                         WHERE id <= 10""")
 
     rows = cursorObj.fetchall()
 
     con.close()
-    
+
     json_str = json.dumps(rows)
 
     return json_str

@@ -1,4 +1,4 @@
-var numberOfFriendliers = 10;
+var positionCounter = 0;
 
 //window.onload = createGridItem();
 
@@ -12,11 +12,11 @@ function friendliers(){
       // Parse the JSON data
       var json_data = JSON.parse(this.responseText);
 
-      createGridItems(10, json_data);
+      createGridItems(json_data.length, json_data);
     }
   }
 
-  let requestData = "?n=" + numberOfFriendliers;
+  let requestData = "?position=" + (positionCounter + 1).toString();
 
   xhttp.open("GET", "/friendliers" + requestData, true);
   xhttp.send();
@@ -27,6 +27,7 @@ function createGridItems(number, messagesData) {
   var divList = [];
   // Create a list of the paragraph classes
   var paragraghClasses = ['firstParagraph', 'secondParagraph', 'thirdParagraph', ];
+
   // Create a list of div element which will become a friendlier on the grid;
   for(var i = 0; i < number; i++){
     // Create the element
@@ -44,11 +45,10 @@ function createGridItems(number, messagesData) {
 
       divList[i].appendChild(paraList[j]);
     }
-    // Customize with a progressive id;
-    divList[i].setAttribute('id', 'friendlier' + i);
 
     divList[i].setAttribute('class', 'friendliersClass');
     // Append the div into the grid;
     document.getElementById('gridMessages').appendChild(divList[i]);
   }
+  positionCounter += number;
 }

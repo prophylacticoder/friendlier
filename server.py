@@ -37,17 +37,20 @@ def handle_message():
 
 @app.route('/friendliers', methods=['GET', ])
 def handle_ajax():
-    numberOfFriendliers = request.args.get('n', '')
+    numberOfFriendliers = request.args.get('position', '')
 
     # Create a DB connection and set up a cursor
     con = db.sql_connection()
     cursorObj = con.cursor()
 
-    cursorObj.execute("""SELECT nickname, datePosted, message FROM messages
-                        WHERE id <= 10""")
+    selectStatement = """SELECT nickname, datePosted, message FROM messages
+                        WHERE id >= {} and id < {}""".format(
+                        (numberOfFriendliers), (int(numberOfFriendliers) + 10))
+
+    print(selectStatement)
+    cursorObj.execute(selectStatement)
 
     rows = cursorObj.fetchall()
-
     con.close()
 
     json_str = json.dumps(rows)

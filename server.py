@@ -16,7 +16,8 @@ message = dict()
 def handle_message():
     if request.method == 'POST':
         # Take the data from the request and organize into a dictionary
-        if 'anonymous' in request.form.values():
+
+        if request.form.get('anonymous'):
             message['nickname'] = "Anonymous"
         else: message['nickname'] = request.form['nickname']
         message['message'] = request.form['message']
@@ -33,21 +34,32 @@ def handle_message():
         con.commit()
         con.close()
 
-        return render_template('index.html')
+        return redirect("http://localhost:5000", code=302)
 
 @app.route('/friendliers', methods=['GET', ])
 def handle_ajax():
-    numberOfFriendliers = request.args.get('position', '')
+    positionCounter = request.args.get('position', '')
 
     # Create a DB connection and set up a cursor
     con = db.sql_connection()
     cursorObj = con.cursor()
 
-    selectStatement = """SELECT nickname, datePosted, message FROM messages
-                        WHERE id >= {} and id < {}""".format(
-                        (numberOfFriendliers), (int(numberOfFriendliers) + 10))
+    positionCounter = int(positionCounter)
 
-    print(selectStatement)
+    selectMaxNumber = "SELECT max(id) FROM messages"
+
+    cursorObj.execute(selectMaxNumber)
+
+    rows = cursorObj.fetchall()
+
+    positionCounter = rows[0][0] - positionCounter + 1
+
+    print(positionCounter)
+
+    selectStatement = """SELECT nickname, datePosted, message FROM messages
+                        WHERE id <= {} AND id >= {} ORDER BY id DESC""".format(
+                        (positionCounter), (positionCounter - 10))
+
     cursorObj.execute(selectStatement)
 
     rows = cursorObj.fetchall()

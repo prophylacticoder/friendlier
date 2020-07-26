@@ -52,3 +52,18 @@ function createGridItems(number, messagesData) {
   }
   positionCounter += number;
 }
+
+function isAnonymous() {
+  // Get the checkbox's id
+  var anonymousBox = document.getElementById('anonymous');
+  // Get the nickname's id;
+  var nicknameText = document.getElementById('nickname');
+
+  if(anonymousBox.checked == true) {
+    nickname.disabled = true;
+    nickname.innerHTML = '';
+  } else {
+    nickname.disabled = false;
+    nickname.focus()
+  }
+}

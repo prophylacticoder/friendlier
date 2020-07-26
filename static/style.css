@@ -51,6 +51,8 @@ body {
   grid-auto-rows: 200px;
   background-color: black;
   margin-top: 50px;
+  grid-row-gap: 10px;
+  background-color: #312e2b;
 }
 
 #message {
@@ -75,6 +77,11 @@ body {
   color: black;
 }
 
+#submitMessagebtn:hover {
+  background-color: #cfcfcf;
+  cursor: pointer;
+}
+
 #nickname {
   border: none;
   margin-bottom: 5px;
@@ -86,19 +93,18 @@ body {
 }
 
 .friendliersClass {
-  background-color: #80ff00;
-  border-style: solid;
-  border-width: 2px;
 }
+
 .firstParagraph {
   display: inline-block;
   margin-left: 25px;
-  color: #8000ff;
+  color: #8a8a8a;
   font-size: 25px;
   font-family: 'VarelaRound', monospace;
 }
 
 .secondParagraph {
+  color: white;
   display: inline-block;
   float: right;
   margin-right: 20px;
@@ -107,10 +113,22 @@ body {
 }
 
 .thirdParagraph {
+  color: white;
   font-size: 20px;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 15px 10px 10px 10px;
   word-break:break-all;
+}
+
+#loadMorebtn {
+  width: 100%;
+  border: none;
+  height: 50px;
+}
+
+#loadMorebtn:hover {
+  background-color: #cfcfcf;
+  cursor: pointer;
 }
 
 #footerId {
